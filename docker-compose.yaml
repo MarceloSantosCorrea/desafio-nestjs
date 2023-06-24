@@ -1,0 +1,28 @@
+version: '3'
+services:
+  app:
+    build: .
+    ports:
+      - '3000:3000'
+      - '5555:5555'
+    volumes:
+      - .:/home/node/app
+    depends_on:
+      - mongo
+  mongo:
+    build: ./.docker/mongodb
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITDB_DATABASE: mongo
+      MONGO_REPLICA_HOST: mongo
+      MONGO_REPLICA_PORT: 27017
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongodb_data:/data/db
+
+volumes:
+  mongodb_data:
+    driver: local
