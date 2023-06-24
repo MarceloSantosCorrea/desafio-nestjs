@@ -30,5 +30,5 @@ O ORM usado é o Prisma ORM e o banco de dados Mongo, image: bitnami/mongodb:5.0
 git clone https://github.com/MarceloSantosCorrea/desafio-nestjs.git
 ```
 ```
-docker composer up -d
+docker compose up -d
 ```
